@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creations Robotics Labs | Build. Code. Create.</title>
+<meta name="description" content="Hands-on robotics and technology programs for young innovators at Creations Robotics Labs.">
+<style>
+:root{
+  --bg:#fbf7f1;
+  --bg2:#f3ede2;
+  --card:#ffffff;
+  --text:#0f1a22;
+  --muted:#5c6b74;
+  --accent:#a4b9fb;
+  --accent2:#a4b9fb;
+  --line:rgba(15,26,34,.10);
+  --max:1680px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+a{text-decoration:none;color:inherit}
+.container{width:min(var(--max),96%);margin:auto}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(251,247,241,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:84px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.5px;font-size:18px}
+.logo-mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(160deg,#101f2d,#0b1823);display:grid;place-items:center;position:relative;flex:none}
+.logo-mark i{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--accent);top:13px;box-shadow:0 0 6px var(--accent)}
+.logo-mark i:first-child{left:9px}.logo-mark i:last-child{right:9px}
+.logo span{color:var(--accent)}
+.navlinks{display:flex;align-items:center;gap:32px;color:#3d4b53;font-size:14px;font-weight:500}
+.navlinks a:hover{color:var(--accent)}
+.nav-item{position:relative;display:flex;align-items:center;height:84px}
+.nav-item>a{display:flex;align-items:center;gap:5px;height:100%}
+.caret{transition:transform .18s ease;font-size:10px;position:relative;top:1px}
+.nav-item:hover .caret{transform:rotate(180deg);color:var(--accent)}
+.mega{position:absolute;top:100%;left:0;transform:translateY(6px);width:600px;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 60px rgba(15,26,34,.14);padding:26px 30px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease;z-index:60}
+.nav-item:hover .mega{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.mega-cols{display:flex;gap:50px}
+.mega-col{flex:1;display:flex;flex-direction:column}
+.mega-heading{font-weight:800;font-size:14px;margin-bottom:14px;color:var(--text)}
+.mega-row{display:flex;align-items:center;gap:13px;padding:9px 6px;border-radius:9px;color:var(--text);font-size:15px}
+.mega-row:hover{background:var(--bg2)}
+.mega-emoji{font-size:17px;width:22px;text-align:center;flex:none}
+.mega-viewall{display:flex;align-items:center;gap:9px;color:var(--accent);font-weight:800;margin-top:8px;font-size:14px;padding:9px 6px}
+.mega-viewall u{text-decoration:underline}
+.mega-viewall .viewall-icon{font-size:15px}
+@media(max-width:900px){.mega{display:none}}
+.back-link{font-size:14px;font-weight:700;color:var(--text)}
+.back-link:hover{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:22px}
+.loginlink{font-size:14px;font-weight:600;color:var(--text)}
+.loginlink:hover{color:var(--accent)}
+.navbtn,.hero-btn{background:var(--accent);color:#06120f;padding:13px 22px;border-radius:999px;font-weight:800;border:0;cursor:pointer;font-size:14px}
+.menu{display:none;background:none;border:0;color:var(--text);font-size:25px}
+
+/* ===== bambinos-style full-bleed hero ===== */
+.hero-bb{padding-top:84px;overflow:hidden}
+.hero-flex{display:flex;align-items:stretch;min-height:calc(100vh - 84px)}
+.hero-left{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:center;padding:70px max(2vw,calc((100vw - 1680px)/2 + 40px)) 70px max(2vw,calc((100vw - 1680px)/2));}
+.eyebrow{display:inline-flex;padding:7px 11px;border:1px solid rgba(164,185,251,.3);border-radius:999px;color:var(--accent);font-size:12px;font-weight:700;margin-bottom:22px;width:fit-content}
+h1{font-size:clamp(48px,6vw,84px);line-height:.98;letter-spacing:-4px;max-width:640px}
+h1 em{font-style:normal;color:var(--accent);position:relative;display:inline-block}
+h1 em svg{position:absolute;left:0;bottom:-14px;width:100%;height:16px}
+.hero-left p{font-size:18px;color:var(--muted);max-width:520px;margin:25px 0 32px}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.secondary{border:1px solid var(--line);padding:13px 22px;border-radius:999px;color:var(--text);font-weight:700;font-size:14px}
+.stats-bb{display:flex;flex-wrap:wrap;gap:36px;margin-top:56px}
+.stat-bb{display:flex;flex-direction:column;gap:6px;max-width:150px}
+.stat-icon{width:38px;height:38px;border-radius:50%;background:rgba(164,185,251,.14);display:grid;place-items:center;font-size:17px;margin-bottom:2px}
+.stat-bb strong{font-size:26px;letter-spacing:-1px}
+.stat-bb b{font-size:13px;font-weight:700}
+.stat-bb small{font-size:12px;color:var(--muted);line-height:1.4}
+
+.hero-right{flex:0 0 46%;position:relative;background:radial-gradient(circle at 70% 30%,rgba(164,185,251,.20),transparent 45%),linear-gradient(160deg,#101f2d,#050c12)}
+.hero-right .ring{position:absolute;border:1px solid rgba(164,185,251,.18);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
+.hero-right .ring.r1{width:340px;height:340px}
+.hero-right .ring.r2{width:470px;height:470px}
+.hero-right .ring.r3{width:600px;height:600px}
+.robot{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%) rotate(-4deg);width:210px;height:210px;z-index:2}
+.robot .head{position:absolute;left:35px;top:15px;width:120px;height:85px;border:3px solid var(--accent);border-radius:22px;background:#0b1823;box-shadow:0 0 35px rgba(164,185,251,.2)}
+.eye{position:absolute;top:29px;width:15px;height:15px;border-radius:50%;background:var(--accent);box-shadow:0 0 15px var(--accent)}
+.eye.l{left:27px}.eye.r{right:27px}
+.robot .body{position:absolute;left:52px;top:105px;width:86px;height:65px;border:3px solid var(--accent);border-radius:15px;background:#0b1823}
+.robot .arm{position:absolute;width:52px;height:8px;background:var(--accent);top:118px;border-radius:8px}
+.robot .arm.l{left:5px;transform:rotate(28deg)}.robot .arm.r{right:5px;transform:rotate(-28deg)}
+.robot .wheel{position:absolute;width:34px;height:34px;border:5px solid #e8f2f7;border-radius:50%;bottom:-8px;background:#101f2d}
+.robot .wheel.l{left:38px}.robot .wheel.r{right:38px}
+.doodle{position:absolute;color:var(--accent);opacity:.85}
+.doodle.star{top:14%;left:10%;width:26px}
+.doodle.trail{top:26%;right:16%;width:44px}
+.doodle.plane{bottom:16%;left:14%;width:46px;transform:rotate(-8deg)}
+@media(max-width:900px){.hero-flex{flex-direction:column;min-height:auto}.hero-right{flex:none;height:380px}.hero-left{padding:60px 24px 40px}}
+section{padding:105px 0}
+.section-head{max-width:720px;margin-bottom:45px}
+.kicker{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:800}
+h2{font-size:clamp(34px,4vw,58px);line-height:1.05;letter-spacing:-2px;margin:10px 0 14px}
+.section-head p{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{background:var(--card);border:1px solid var(--line);padding:26px;border-radius:18px;transition:.25s}
+.card:hover{transform:translateY(-5px);border-color:rgba(164,185,251,.35)}
+.icon{font-size:28px;margin-bottom:35px}.card h3{font-size:18px;margin-bottom:8px}.card p{font-size:14px;color:var(--muted)}
+.projects{background:var(--bg2)}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.project{min-height:270px;border-radius:20px;overflow:hidden;position:relative;border:1px solid var(--line);background:linear-gradient(145deg,#142b3a,#0c1721);padding:25px;display:flex;align-items:flex-end}
+.project:nth-child(2){background:linear-gradient(145deg,#29200f,#0c1721)}
+.project:nth-child(3){background:linear-gradient(145deg,#16362f,#0c1721)}
+.project:nth-child(4){background:linear-gradient(145deg,#30251c,#0c1721)}
+.project:nth-child(5){background:linear-gradient(145deg,#29200f,#0c1721)}
+.project:nth-child(6){background:linear-gradient(145deg,#1c3038,#0c1721)}
+.project:before{content:"";position:absolute;width:160px;height:160px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-35px;top:-35px}
+.project{color:#ffffff}
+.project small{color:var(--accent);font-weight:700}.project h3{font-size:25px;margin-top:5px;color:#ffffff}
+.path{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.step{text-align:center;padding:24px 10px;position:relative}
+.step .num{width:42px;height:42px;border:1px solid rgba(164,185,251,.45);border-radius:50%;display:grid;place-items:center;margin:0 auto 15px;color:var(--accent);font-weight:800}
+.step h3{font-size:16px}.step p{font-size:12px;color:var(--muted);margin-top:6px}
+.programs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.program{border:1px solid var(--line);border-radius:20px;padding:30px;background:var(--card)}
+.program.featured{border-color:rgba(164,185,251,.45);box-shadow:inset 0 2px 0 var(--accent)}
+.program .age{color:var(--accent);font-size:12px;font-weight:800}.program h3{font-size:25px;margin:10px 0}.program ul{list-style:none;color:var(--muted);font-size:14px}.program li{padding:8px 0;border-bottom:1px solid var(--line)}
+.program li:before{content:"✓";color:var(--accent);margin-right:8px}
+.testimonials{background:#09141e}
+.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.quote{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:25px}
+.quote p{color:var(--text);font-size:15px}.quote strong{display:block;margin-top:20px;font-size:13px}.quote span{color:var(--muted);font-size:12px}
+.cta{padding:85px 0}.cta-box{background:linear-gradient(120deg,#12302e,#13243b);border:1px solid rgba(164,185,251,.25);border-radius:28px;padding:60px;text-align:center}.cta-box,.cta-box h2{color:#ffffff}.cta-box p{color:#c7d3d8;max-width:560px;margin:0 auto 25px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}
+.modal{position:fixed;inset:0;background:rgba(15,26,34,.55);display:none;place-items:center;z-index:100;padding:20px}.modal.show{display:grid}.modal-box{width:min(500px,100%);background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px}.modal-box h2{font-size:30px}.close{float:right;background:none;border:0;color:var(--text);font-size:24px;cursor:pointer}
+form{display:grid;gap:12px;margin-top:20px}input,select{width:100%;padding:13px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--text)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.robot-stage{height:380px}.cards{grid-template-columns:repeat(2,1fr)}.project-grid,.programs,.quote-grid{grid-template-columns:1fr 1fr}.path{grid-template-columns:1fr 1fr}.navlinks{display:none}.menu{display:block}}
+@media(max-width:600px){.navbtn{display:none}.hero{padding-top:125px}.hero-grid{gap:35px}h1{letter-spacing:-2.5px}.hero p{font-size:16px}.stats{gap:18px}.robot-stage{height:310px}.cards,.project-grid,.programs,.quote-grid{grid-template-columns:1fr}.path{grid-template-columns:1fr}.cta-box{padding:40px 20px}section{padding:75px 0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#"><span class="logo-mark"><i></i><i></i></span>creations <span>robotics labs</span></a>
+    <nav class="navlinks">
+      <div class="nav-item">
+        <a href="#programs">Courses <span class="caret">▾</span></a>
+        <div class="mega">
+          <div class="mega-cols">
+            <div class="mega-col">
+              <div class="mega-heading">Courses</div>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">🤖</span>Robotics</a>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">💻</span>Coding</a>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">🔌</span>Electronics</a>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">🧠</span>Generative AI</a>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">🏆</span>Olympiad Prep</a>
+              <a class="mega-viewall" href="All Courses.html"><span class="viewall-icon">👁</span><u>View All</u></a>
+            </div>
+            <div class="mega-col">
+              <div class="mega-heading">Explore More</div>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">⚙️</span>Arduino Projects</a>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">🚁</span>Drone Building</a>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">🧊</span>3D Printing</a>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">📱</span>App Development</a>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">🥇</span>Competitive Robotics</a>
+              <a class="mega-viewall" href="All Courses.html"><span class="viewall-icon">👁</span><u>View All</u></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#about">About Us</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#blog">Blog</a>
+      <a href="#reviews">Wall of Love</a>
+    </nav>
+    <div class="nav-right">
+      <a class="loginlink" href="#">Login</a>
+      <button class="navbtn" onclick="openModal()">Book Free Demo</button>
+    </div>
+    <button class="menu" aria-label="menu">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero-bb">
+<div class="hero-flex">
+  <div class="hero-left">
+    <div class="eyebrow">HANDS-ON ROBOTICS FOR YOUNG INNOVATORS</div>
+    <h1>Don't just learn robotics.<br>
+      <em>Build it. Naveed
+        <svg viewBox="0 0 200 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10 C 40 2, 70 14, 100 8 S 160 2, 198 9" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+      </em>
+    </h1>
+    <p>Live, project-based robotics programs where students learn electronics, coding and engineering by building real working robots.</p>
+    <div class="hero-actions">
+      <button class="hero-btn" onclick="openModal()">Book a Free Demo</button>
+      <a class="secondary" href="#projects">Explore Projects</a>
+    </div>
+    <div class="stats-bb">
+      <div class="stat-bb"><div class="stat-icon">🤖</div><strong>100+</strong><b>Students guided</b><small>Learning by building real robots.</small></div>
+      <div class="stat-bb"><div class="stat-icon">⚙️</div><strong>20+</strong><b>Projects</b><small>From simple circuits to smart machines.</small></div>
+      <div class="stat-bb"><div class="stat-icon">🧑‍🏫</div><strong>1:1</strong><b>Live guidance</b><small>Real mentors, every single session.</small></div>
+      <div class="stat-bb"><div class="stat-icon">⭐</div><strong>4.8+</strong><b>Rated by parents</b><small>Loved by families who've joined us.</small></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+    <svg class="doodle star" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l2.2 6.8H21l-5.6 4.1 2.1 6.9L12 15.7 6.5 19.8l2.1-6.9L3 8.8h6.8L12 2z" fill="currentColor"/></svg>
+    <svg class="doodle trail" viewBox="0 0 60 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 20 C 15 4, 25 30, 40 12 S 55 4, 58 10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="1 7"/></svg>
+    <svg class="doodle plane" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 20 L36 6 L23 36 L18 22 L3 20Z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M18 22 L36 6" stroke="currentColor" stroke-width="2"/></svg>
+    <div class="robot">
+      <div class="head"><i class="eye l"></i><i class="eye r"></i></div>
+      <div class="body"></div>
+      <div class="arm l"></div><div class="arm r"></div>
+      <div class="wheel l"></div><div class="wheel r"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="why" >
+<div class="container">
+  <div class="section-head"><div class="kicker">The Creations Method</div><h2>Learning happens when you build.</h2><p>We turn abstract concepts into hands-on challenges so students can understand how technology actually works.</p></div>
+  <div class="cards">
+    <div class="card"><div class="icon">⚙</div><h3>Build Real Projects</h3><p>Students work with motors, sensors, microcontrollers and electronics—not just simulations.</p></div>
+    <div class="card"><div class="icon">⌘</div><h3>Learn Coding</h3><p>Understand programming logic by writing code that controls physical systems.</p></div>
+    <div class="card"><div class="icon">◈</div><h3>Think Like an Engineer</h3><p>Debug, experiment, redesign and solve challenges independently.</p></div>
+    <div class="card"><div class="icon">↗</div><h3>Create & Showcase</h3><p>Students finish with projects they can demonstrate, explain and improve.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="projects" id="projects">
+<div class="container">
+  <div class="section-head"><div class="kicker">Build Lab</div><h2>What will your child build?</h2><p>Our curriculum moves from fundamentals to increasingly complex robotics and technology projects.</p></div>
+  <div class="project-grid">
+    <div class="project"><div><small>ROBOTICS</small><h3>Smart Robot Car</h3></div></div>
+    <div class="project"><div><small>MECHATRONICS</small><h3>Robotic Arm</h3></div></div>
+    <div class="project"><div><small>AUTONOMOUS</small><h3>Obstacle Avoider</h3></div></div>
+    <div class="project"><div><small>DRONES</small><h3>Drone Technology</h3></div></div>
+    <div class="project"><div><small>IoT</small><h3>Connected Devices</h3></div></div>
+    <div class="project"><div><small>AI + ROBOTICS</small><h3>Smart Robots</h3></div></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><div class="kicker">Learning Journey</div><h2>Explore. Build. Solve. Create.</h2></div>
+  <div class="path">
+    <div class="step"><div class="num">01</div><h3>Explore</h3><p>Discover how technology works.</p></div>
+    <div class="step"><div class="num">02</div><h3>Learn</h3><p>Understand electronics and code.</p></div>
+    <div class="step"><div class="num">03</div><h3>Build</h3><p>Turn ideas into working machines.</p></div>
+    <div class="step"><div class="num">04</div><h3>Solve</h3><p>Debug and overcome challenges.</p></div>
+    <div class="step"><div class="num">05</div><h3>Create</h3><p>Design and showcase your own ideas.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="programs" class="projects">
+<div class="container">
+  <div class="section-head"><div class="kicker">Programs</div><h2>A path for every level.</h2><p>Start with fundamentals and progress toward advanced robotics, IoT and intelligent systems.</p></div>
+  <div class="programs">
+    <div class="program"><div class="age">BEGINNER · AGES 7–10</div><h3>Robotics Explorer</h3><ul><li>Electronics fundamentals</li><li>Motors & sensors</li><li>Block + beginner coding</li><li>Fun robot projects</li></ul></div>
+    <div class="program featured"><div class="age">INTERMEDIATE · AGES 10–13</div><h3>Robotics Builder</h3><ul><li>Arduino programming</li><li>Sensor integration</li><li>Mechanical systems</li><li>Autonomous robots</li></ul></div>
+    <div class="program"><div class="age">ADVANCED · AGES 13+</div><h3>Future Engineer</h3><ul><li>Advanced programming</li><li>ESP32 & IoT</li><li>Robotic arms & drones</li><li>AI + robotics concepts</li></ul></div>
+  </div>
+</div>
+</section>
+
+<section id="reviews" class="testimonials">
+<div class="container">
+  <div class="section-head"><div class="kicker">Parent Feedback</div><h2>Learning that parents can see.</h2></div>
+  <div class="quote-grid">
+    <div class="quote"><p>“My child was excited to show us what he had built after every class. The practical approach made robotics much easier to understand.”</p><strong>Parent of a student</strong><span>Robotics Program</span></div>
+    <div class="quote"><p>“The biggest difference was that the class was not just theory. He was actually building and testing things himself.”</p><strong>Parent of a student</strong><span>Robotics Program</span></div>
+    <div class="quote"><p>“The projects gave my child confidence to experiment and solve problems instead of waiting for the answer.”</p><strong>Parent of a student</strong><span>Robotics Program</span></div>
+  </div>
+</div>
+</section>
+
+
+<section id="about">
+<div class="container">
+  <div class="section-head">
+    <div class="kicker">About Us</div>
+    <h2>We turn curiosity into real-world skills.</h2>
+    <p>Creations Robotics Labs is focused on hands-on robotics, electronics and coding education. Students learn by building, testing, debugging and creating.</p>
+  </div>
+</div>
+</section>
+
+<section id="pricing" class="projects">
+<div class="container">
+  <div class="section-head">
+    <div class="kicker">Pricing</div>
+    <h2>Choose a learning path.</h2>
+    <p>Program fees can be customized based on the child's level, class format and robotics kit requirements.</p>
+  </div>
+  <div class="programs">
+    <div class="program"><div class="age">STARTER</div><h3>Explore</h3><ul><li>Beginner robotics</li><li>Live trainer guidance</li><li>Hands-on projects</li></ul></div>
+    <div class="program featured"><div class="age">MOST POPULAR</div><h3>Build</h3><ul><li>Structured robotics curriculum</li><li>Multiple real projects</li><li>Progress-based learning</li></ul></div>
+    <div class="program"><div class="age">ADVANCED</div><h3>Create</h3><ul><li>Advanced robotics & IoT</li><li>Independent projects</li><li>Innovation challenges</li></ul></div>
+  </div>
+</div>
+</section>
+
+<section id="blog">
+<div class="container">
+  <div class="section-head">
+    <div class="kicker">Blog</div>
+    <h2>Ideas, projects and robotics.</h2>
+    <p>Coming soon: beginner guides, project tutorials, robotics concepts and technology articles for students and parents.</p>
+  </div>
+</div>
+</section>
+
+<section class="cta">
+<div class="container">
+  <div class="cta-box">
+    <div class="kicker">Start Building</div>
+    <h2>Let your child build their first robot.</h2>
+    <p>Book a free introductory session and experience our project-based robotics learning approach.</p>
+    <button class="hero-btn" onclick="openModal()">Book a Free Demo</button>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">© 2026 Creations Robotics Labs · Robotics · Electronics · Coding · Future Technology</div>
+</footer>
+
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal()">×</button>
+
+    <div class="kicker">FREE DEMO</div>
+    <h2>Book a robotics demo.</h2>
+
+    <form onsubmit="submitDemo(event)">
+      <input required placeholder="Parent name">
+
+      <input required
+             placeholder="Email address"
+             type="email">
+
+      <input required
+             placeholder="Phone number"
+             type="tel">
+
+      <input required
+             placeholder="Child's name">
+
+      <select required>
+        <option value="">Child's age</option>
+        <option>6–8</option>
+        <option>9–11</option>
+        <option>12–14</option>
+        <option>15+</option>
+      </select>
+
+      <select required>
+        <option value="">Do you have a laptop?</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <button class="hero-btn" type="submit">Request Demo</button>
+    </form>
+  </div>
+</div>
+
+
+
+<script>
+const modal=document.getElementById('modal');
+function openModal(){modal.classList.add('show');document.body.style.overflow='hidden'}
+function closeModal(){modal.classList.remove('show');document.body.style.overflow=''}
+function submitDemo(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('button');
+  btn.textContent='Demo request received';
+  btn.disabled=true;
+  setTimeout(()=>{closeModal();btn.textContent='Request Demo';btn.disabled=false;e.target.reset()},1600);
+}
+document.querySelector('.menu').addEventListener('click',()=>{
+  const nav=document.querySelector('.navlinks');
+  nav.style.display=nav.style.display==='flex'?'none':'flex';
+  if(nav.style.display==='flex'){nav.style.position='absolute';nav.style.top='74px';nav.style.left='0';nav.style.right='0';nav.style.background='#fbf7f1';nav.style.padding='20px';nav.style.flexDirection='column';nav.style.gap='18px';}
+});
+</script>
+</body>
+</html>
