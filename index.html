@@ -25,9 +25,7 @@ a{text-decoration:none;color:inherit}
 header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(251,247,241,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .nav{height:84px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.5px;font-size:18px}
-.logo-mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(160deg,#101f2d,#0b1823);display:grid;place-items:center;position:relative;flex:none}
-.logo-mark i{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--accent);top:13px;box-shadow:0 0 6px var(--accent)}
-.logo-mark i:first-child{left:9px}.logo-mark i:last-child{right:9px}
+.logo-mark{width:36px;height:36px;border-radius:11px;object-fit:cover;object-position:center top;flex:none;background:#101f2d}
 .logo span{color:var(--accent)}
 .navlinks{display:flex;align-items:center;gap:32px;color:#3d4b53;font-size:14px;font-weight:500}
 .navlinks a:hover{color:var(--accent)}
@@ -73,20 +71,12 @@ h1 em svg{position:absolute;left:0;bottom:-14px;width:100%;height:16px}
 .stat-bb b{font-size:13px;font-weight:700}
 .stat-bb small{font-size:12px;color:var(--muted);line-height:1.4}
 
-.hero-right{flex:0 0 46%;position:relative;background:radial-gradient(circle at 70% 30%,rgba(164,185,251,.20),transparent 45%),linear-gradient(160deg,#101f2d,#050c12)}
+.hero-right{flex:0 0 46%;position:relative;background:radial-gradient(circle at 70% 30%,rgba(164,185,251,.20),transparent 45%),linear-gradient(160deg,#fbf7f1,#fbf7f1);overflow:hidden}
 .hero-right .ring{position:absolute;border:1px solid rgba(164,185,251,.18);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
 .hero-right .ring.r1{width:340px;height:340px}
 .hero-right .ring.r2{width:470px;height:470px}
 .hero-right .ring.r3{width:600px;height:600px}
-.robot{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%) rotate(-4deg);width:210px;height:210px;z-index:2}
-.robot .head{position:absolute;left:35px;top:15px;width:120px;height:85px;border:3px solid var(--accent);border-radius:22px;background:#0b1823;box-shadow:0 0 35px rgba(164,185,251,.2)}
-.eye{position:absolute;top:29px;width:15px;height:15px;border-radius:50%;background:var(--accent);box-shadow:0 0 15px var(--accent)}
-.eye.l{left:27px}.eye.r{right:27px}
-.robot .body{position:absolute;left:52px;top:105px;width:86px;height:65px;border:3px solid var(--accent);border-radius:15px;background:#0b1823}
-.robot .arm{position:absolute;width:52px;height:8px;background:var(--accent);top:118px;border-radius:8px}
-.robot .arm.l{left:5px;transform:rotate(28deg)}.robot .arm.r{right:5px;transform:rotate(-28deg)}
-.robot .wheel{position:absolute;width:34px;height:34px;border:5px solid #e8f2f7;border-radius:50%;bottom:-8px;background:#101f2d}
-.robot .wheel.l{left:38px}.robot .wheel.r{right:38px}
+.hero-img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:auto;height:auto;max-width:85%;max-height:85%;border-radius:24px;object-fit:contain;z-index:2;box-shadow:0 30px 60px rgba(0,0,0,.25)}
 .doodle{position:absolute;color:var(--accent);opacity:.85}
 .doodle.star{top:14%;left:10%;width:26px}
 .doodle.trail{top:26%;right:16%;width:44px}
@@ -141,7 +131,7 @@ form{display:grid;gap:12px;margin-top:20px}input,select{width:100%;padding:13px;
 <body>
 <header>
   <div class="container nav">
-    <a class="logo" href="#"><span class="logo-mark"><i></i><i></i></span>creations <span>robotics labs</span></a>
+    <a class="logo" href="#"><img class="logo-mark" src="images/logo.png" alt="Creations Robotics Labs">creations <span>robotics labs</span></a>
     <nav class="navlinks">
       <div class="nav-item">
         <a href="#programs">Courses <span class="caret">▾</span></a>
@@ -150,21 +140,11 @@ form{display:grid;gap:12px;margin-top:20px}input,select{width:100%;padding:13px;
             <div class="mega-col">
               <div class="mega-heading">Courses</div>
               <a class="mega-row" href="courses.html"><span class="mega-emoji">🤖</span>Robotics</a>
-              <a class="mega-row" href="courses.html"><span class="mega-emoji">💻</span>Coding</a>
-              <a class="mega-row" href="courses.html"><span class="mega-emoji">🧠</span>IOT</a>
-              <a class="mega-row" href="courses.html"><span class="mega-emoji">🔌</span>Electronics</a>
-              <!-- <a class="mega-row" href="courses.html"><span class="mega-emoji">🏆</span>Olympiad Prep</a> -->
+              <a class="mega-row" href="#programs"><span class="mega-emoji">💻</span>Coding</a>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">🧠</span>IOT</a>
+              <a class="mega-row" href="#programs"><span class="mega-emoji">🔌</span>Electronics</a>
               <a class="mega-viewall" href="Courses.html"><span class="viewall-icon">👁</span><u>View All</u></a>
             </div>
-            <!-- <div class="mega-col">
-              <div class="mega-heading">Explore More</div>
-              <a class="mega-row" href="#programs"><span class="mega-emoji">⚙️</span>Arduino Projects</a>
-              <a class="mega-row" href="#programs"><span class="mega-emoji">🚁</span>Drone Building</a>
-              <a class="mega-row" href="#programs"><span class="mega-emoji">🧊</span>3D Printing</a>
-              <a class="mega-row" href="#programs"><span class="mega-emoji">📱</span>App Development</a>
-              <a class="mega-row" href="#programs"><span class="mega-emoji">🥇</span>Competitive Robotics</a>
-              <a class="mega-viewall" href="Courses.html"><span class="viewall-icon">👁</span><u>View All</u></a>
-            </div> -->
           </div>
         </div>
       </div>
@@ -208,12 +188,7 @@ form{display:grid;gap:12px;margin-top:20px}input,select{width:100%;padding:13px;
     <svg class="doodle star" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l2.2 6.8H21l-5.6 4.1 2.1 6.9L12 15.7 6.5 19.8l2.1-6.9L3 8.8h6.8L12 2z" fill="currentColor"/></svg>
     <svg class="doodle trail" viewBox="0 0 60 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 20 C 15 4, 25 30, 40 12 S 55 4, 58 10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="1 7"/></svg>
     <svg class="doodle plane" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 20 L36 6 L23 36 L18 22 L3 20Z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M18 22 L36 6" stroke="currentColor" stroke-width="2"/></svg>
-    <div class="robot">
-      <div class="head"><i class="eye l"></i><i class="eye r"></i></div>
-      <div class="body"></div>
-      <div class="arm l"></div><div class="arm r"></div>
-      <div class="wheel l"></div><div class="wheel r"></div>
-    </div>
+    <img class="hero-img" src="images/boy.png" alt="Student with robot">
   </div>
 </div>
 </section>
@@ -261,15 +236,15 @@ form{display:grid;gap:12px;margin-top:20px}input,select{width:100%;padding:13px;
 <div class="container">
   <div class="section-head"><div class="kicker">Programs</div><h2>A path for every level.</h2><p>Start with fundamentals and progress toward advanced robotics, IoT and intelligent systems.</p></div>
   <div class="programs">
-    <div class="program">         <div class="age">BEGINNER · AGES 7–10</div>     <h3>Robotics Explorer</h3> <ul><li>Electronics fundamentals</li><li>Motors & sensors</li>  <li>Block + beginner coding</li><li>Fun robot projects</li>    </ul></div>
-    <div class="program featured"><div class="age">INTERMEDIATE · AGES 10–13</div><h3>Robotics Builder</h3>  <ul><li>Arduino programming</li>     <li>Sensor integration</li><li>Mechanical systems</li>     <li>Autonomous robots</li>     </ul></div>
-    <div class="program">         <div class="age">ADVANCED · AGES 13+</div>      <h3>Future Engineer</h3>   <ul><li>Advanced programming</li>    <li>ESP32 & IoT</li>       <li>Robotic arms & drones</li>  <li>AI + robotics concepts</li></ul></div>
+    <div class="program"><div class="age">BEGINNER · AGES 7–10</div><h3>Robotics Explorer</h3><ul><li>Electronics fundamentals</li><li>Motors & sensors</li><li>Block + beginner coding</li><li>Fun robot projects</li></ul></div>
+    <div class="program featured"><div class="age">INTERMEDIATE · AGES 10–13</div><h3>Robotics Builder</h3><ul><li>Arduino programming</li><li>Sensor integration</li><li>Mechanical systems</li><li>Autonomous robots</li></ul></div>
+    <div class="program"><div class="age">ADVANCED · AGES 13+</div><h3>Future Engineer</h3><ul><li>Advanced programming</li><li>ESP32 & IoT</li><li>Robotic arms & drones</li><li>AI + robotics concepts</li></ul></div>
   </div>
 
   <div class="section-head"><div class="kicker"></div></div>
   <div class="programs">
-    <div class="program">         <div class="age">BEGINNER · AGES 7–10</div>     <h3>Coding</h3> <ul><li>Electronics fundamentals</li><li>Motors & sensors</li>  <li>Block + beginner coding</li><li>Fun robot projects</li>    </ul></div>
-    <div class="program">         <div class="age">ADVANCED · AGES 13+</div>      <h3>Pro Coding</h3>   <ul><li>Advanced programming</li>    <li>ESP32 & IoT</li>       <li>Robotic arms & drones</li>  <li>AI + robotics concepts</li></ul></div>
+    <div class="program"><div class="age">BEGINNER · AGES 7–10</div><h3>Coding</h3><ul><li>Electronics fundamentals</li><li>Motors & sensors</li><li>Block + beginner coding</li><li>Fun robot projects</li></ul></div>
+    <div class="program"><div class="age">ADVANCED · AGES 13+</div><h3>Pro Coding</h3><ul><li>Advanced programming</li><li>ESP32 & IoT</li><li>Robotic arms & drones</li><li>AI + robotics concepts</li></ul></div>
   </div>
 
 </div>
