@@ -125,8 +125,8 @@ form{display:grid;gap:12px;margin-top:20px}input,select{width:100%;padding:13px;
 .radio-opt{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border:1px solid var(--line);border-radius:9px;cursor:pointer;font-size:14px;font-weight:600;color:var(--text);background:var(--bg)}
 .radio-opt input{width:auto;accent-color:var(--accent);margin:0}
 .radio-opt:has(input:checked){border-color:var(--accent);background:rgba(164,185,251,.16)}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.robot-stage{height:380px}.cards{grid-template-columns:repeat(2,1fr)}.project-grid,.programs,.quote-grid{grid-template-columns:1fr 1fr}.path{grid-template-columns:1fr 1fr}.navlinks{display:none}.menu{display:block}}
-@media(max-width:600px){.navbtn{display:none}.hero{padding-top:125px}.hero-grid{gap:35px}h1{letter-spacing:-2.5px}.hero p{font-size:16px}.stats{gap:18px}.robot-stage{height:310px}.cards,.project-grid,.programs,.quote-grid{grid-template-columns:1fr}.path{grid-template-columns:1fr}.cta-box{padding:40px 20px}section{padding:75px 0}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.robot-stage{height:380px}.cards{grid-template-columns:repeat(2,1fr)}.project-grid,.programs,.quote-grid{grid-template-columns:1fr 1fr}.path{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.nav-right{gap:10px}.navbtn{padding:10px 14px;font-size:12px}.navlinks{gap:14px;font-size:13px}.logo-img{height:34px}.hero{padding-top:125px}.hero-grid{gap:35px}h1{letter-spacing:-2.5px}.hero p{font-size:16px}.stats{gap:18px}.robot-stage{height:310px}.cards,.project-grid,.programs,.quote-grid{grid-template-columns:1fr}.path{grid-template-columns:1fr}.cta-box{padding:40px 20px}section{padding:75px 0}}
 </style>
 </head>
 <body>
@@ -149,16 +149,10 @@ form{display:grid;gap:12px;margin-top:20px}input,select{width:100%;padding:13px;
           </div>
         </div>
       </div>
-      <a href="#about">About Us</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#blog">Blog</a>
-      <a href="#reviews">Wall of Love</a>
     </nav>
     <div class="nav-right">
-      <a class="loginlink" href="#">Login</a>
       <a class="navbtn" href="https://docs.google.com/forms/d/e/1FAIpQLSfVxt28O_CwqlTC85OA5rV5GS7OF1iWk_kCfUhh46LKaTUMXQ/viewform?usp=sharing&ouid=105218790995508268694" target="_blank" rel="noopener">Book Free Demo</a>
     </div>
-    <button class="menu" aria-label="menu">☰</button>
   </div>
 </header>
 
@@ -251,53 +245,6 @@ form{display:grid;gap:12px;margin-top:20px}input,select{width:100%;padding:13px;
 </div>
 </section>
 
-<section id="reviews" class="testimonials">
-<div class="container">
-  <div class="section-head"><div class="kicker">Parent Feedback</div><h2>Learning that parents can see.</h2></div>
-  <div class="quote-grid">
-    <div class="quote"><p>“My child was excited to show us what he had built after every class. The practical approach made robotics much easier to understand.”</p><strong>Parent of a student</strong><span>Robotics Program</span></div>
-    <div class="quote"><p>“The biggest difference was that the class was not just theory. He was actually building and testing things himself.”</p><strong>Parent of a student</strong><span>Robotics Program</span></div>
-    <div class="quote"><p>“The projects gave my child confidence to experiment and solve problems instead of waiting for the answer.”</p><strong>Parent of a student</strong><span>Robotics Program</span></div>
-  </div>
-</div>
-</section>
-
-
-<section id="about">
-<div class="container">
-  <div class="section-head">
-    <div class="kicker">About Us</div>
-    <h2>We turn curiosity into real-world skills.</h2>
-    <p>Creations Robotics Labs is focused on hands-on robotics, electronics and coding education. Students learn by building, testing, debugging and creating.</p>
-  </div>
-</div>
-</section>
-
-<section id="pricing" class="projects">
-<div class="container">
-  <div class="section-head">
-    <div class="kicker">Pricing</div>
-    <h2>Choose a learning path.</h2>
-    <p>Program fees can be customized based on the child's level, class format and robotics kit requirements.</p>
-  </div>
-  <div class="programs">
-    <div class="program"><div class="age">STARTER</div><h3>Explore</h3><ul><li>Beginner robotics</li><li>Live trainer guidance</li><li>Hands-on projects</li></ul></div>
-    <div class="program featured"><div class="age">MOST POPULAR</div><h3>Build</h3><ul><li>Structured robotics curriculum</li><li>Multiple real projects</li><li>Progress-based learning</li></ul></div>
-    <div class="program"><div class="age">ADVANCED</div><h3>Create</h3><ul><li>Advanced robotics & IoT</li><li>Independent projects</li><li>Innovation challenges</li></ul></div>
-  </div>
-</div>
-</section>
-
-<section id="blog">
-<div class="container">
-  <div class="section-head">
-    <div class="kicker">Blog</div>
-    <h2>Ideas, projects and robotics.</h2>
-    <p>Coming soon: beginner guides, project tutorials, robotics concepts and technology articles for students and parents.</p>
-  </div>
-</div>
-</section>
-
 <section class="cta">
 <div class="container">
   <div class="cta-box">
@@ -315,11 +262,6 @@ form{display:grid;gap:12px;margin-top:20px}input,select{width:100%;padding:13px;
 </footer>
 
 <script>
-document.querySelector('.menu').addEventListener('click',()=>{
-  const nav=document.querySelector('.navlinks');
-  nav.style.display=nav.style.display==='flex'?'none':'flex';
-  if(nav.style.display==='flex'){nav.style.position='absolute';nav.style.top='74px';nav.style.left='0';nav.style.right='0';nav.style.background='#fbf7f1';nav.style.padding='20px';nav.style.flexDirection='column';nav.style.gap='18px';}
-});
 </script>
 </body>
 </html>
